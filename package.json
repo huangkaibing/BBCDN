@@ -1,0 +1,39 @@
+{
+  "name": "BBCDN",
+  "version": "0.5.0",
+  "author": "huangkaibing",
+  "description": "CDN上传",
+  "main": "main.js",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "ftp": "^0.3.10",
+    "moment": "^2.19.1",
+    "node-uuid": "^1.4.8",
+    "pg": "^7.3.0",
+    "pg-hstore": "^2.3.2",
+    "q": "^1.5.1",
+    "sequelize": "^4.15.0",
+    "shortid": "^2.2.8"
+  },
+  "devDependencies": {
+    "asar": "^0.13.0",
+    "electron": "1.7.9",
+    "electron-builder": "^19.39.0"
+  },
+  "build": {
+    "appId": "com.huangkb.cdn",
+    "productName": "保宝CDN上传工具",
+    "icon": "./img/logo",
+    "copyright": "Copyright © year ${author}",
+    "directories": {
+      "output": "./aa-out"
+    },
+    "extraFiles": [
+      "./img"
+    ]
+  },
+  "scripts": {
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  }
+}
