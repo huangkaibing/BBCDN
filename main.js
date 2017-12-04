@@ -240,6 +240,7 @@ ipcMain.on('_historysearch_msg', (event, arg) => {
         });
     } else {
         DB.cdnrecord.findAll({
+            attributes: ['cdnfilepath', 'filesize','createdAt'],
             where: {
                 username: username
             }, order: [['createdAt', 'desc']]
