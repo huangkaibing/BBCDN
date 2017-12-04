@@ -5,7 +5,7 @@ const __BrowserWindow = __remote.BrowserWindow;
 const __path = nodeRequire('path');
 const __url = nodeRequire('url');
 const __fs = nodeRequire('fs');
-let curversion = "0.5.0";
+let curversion = "0.6.0";
 
 let app = new Vue({
     el: '#login',
@@ -77,11 +77,11 @@ __ipcRenderer.on('_logincheckversion_reply', function (event, arg) {
                 height: 800,
                 title: "",
                 icon: "./img/logo.ico",
-                // autoHideMenuBar: true,
+                autoHideMenuBar: true,
                 webPreferences: {defaultEncoding: "utf-8"},
                 show: false,
-                center: true,
-                resizable: false
+                center: true
+                // resizable: false
             });
             win.loadURL(__url.format({
                 pathname: __path.join(__dirname, 'index.html'),

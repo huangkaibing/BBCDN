@@ -49,7 +49,7 @@ function createWindow() {
 // Electron 会在初始化后并准备
 // 创建浏览器窗口时，调用这个函数。
 // 部分 API 在 ready 事件触发后才能使用。
-app.on('ready', createWindow)
+app.on('ready', createWindow);
 
 // 当全部窗口关闭时退出。
 app.on('window-all-closed', () => {
@@ -105,7 +105,7 @@ ipcMain.on('_loginclose_msg', (event, arg) => {
 
 ipcMain.on('_distorylogin_msg', (event, arg) => {
     if (process.platform !== 'darwin') {
-        let bean = {}
+        let bean = {};
         fs.writeFile('./cookie.txt', JSON.stringify(bean), (err) => {
             if (err) throw err;
             console.log('The file has been saved!');
@@ -139,7 +139,7 @@ ipcMain.on('_dirfile_msg', (event, arg) => {
             if (bool) {
                 let obj = {};//定义一个对象存放文件的路径和名字
                 obj.path = arg;//路径
-                obj.filename = itm//名字
+                obj.filename = itm;//名字
                 filesList.push(obj);
             }
         }
@@ -178,7 +178,7 @@ ipcMain.on('_uploadfile_msg', (event, arg) => {
                 flag: "当前用户单文件最大不得超过" + maxsize + "kb"
             });
         } else {
-            ftp.ftpclient(localfilepath, cdnpath.trim(), cdnmenu.trim()).then(function () {
+            ftp.ftpclient(localfilepath, cdnpath.trim(), cdnmenu.trim(),arg.no).then(function () {
                 DB.cdnrecord.create({
                     id: uuid.v1().replace(/-/g, ""),
                     username: username,

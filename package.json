@@ -1,6 +1,6 @@
 {
   "name": "BBCDN",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "author": "huangkaibing",
   "description": "CDN上传",
   "main": "main.js",

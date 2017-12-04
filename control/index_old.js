@@ -24,6 +24,7 @@ let app = new Vue({
         filetag: "file",
         cdntag: "cdn",
         cdnprocesstag: "cdnprocess",
+        cdnprocesswidthtag: "cdnprocesswidth",
         btnuptag: "btnup",
         btnviewtag: "btnview",
         btncopytag: "btncopy",
@@ -104,6 +105,11 @@ let app = new Vue({
             alert("复制成功!");
         }
     }
+});
+
+__ipcRenderer.on('_uploadprocess_reply', function (event, arg) {
+    $("#" + app.cdnprocesswidthtag + arg.no).css("width", arg.process + "%");
+    $("#" + app.cdnprocesswidthtag + arg.no).text(arg.process + "%");
 });
 
 // 监听主进程返回的消息

@@ -12,6 +12,7 @@ let app = new Vue({
         filetag: "file",
         cdntag: "cdn",
         cdnprocesstag: "cdnprocess",
+        cdnprocesswidthtag: "cdnprocesswidth",
         btnuptag: "btnup",
         btnviewtag: "btnview",
         btncopytag: "btncopy",
@@ -62,7 +63,7 @@ let app = new Vue({
     }
 });
 
-__ipcRenderer.send('_getuserinfo_msg', this.dirpath);
+__ipcRenderer.send('_getuserinfo_msg', app.dirpath);
 __ipcRenderer.on('_getuserinfo_reply', function (event, arg) {
     let data = arg[0].dataValues;
     app.remainnum = data.remainnum;
@@ -83,6 +84,11 @@ __ipcRenderer.on('_uploadfile_reply', function (event, arg) {
         $("#" + app.btncopytag + arg.no).attr("disabled", false);
         app.remainnum = arg.remainnum;
     }
+});
+
+__ipcRenderer.on('_uploadprocess_reply', function (event, arg) {
+    $("#" + app.cdnprocesswidthtag + arg.no).css("width", arg.process + "%");
+    $("#" + app.cdnprocesswidthtag + arg.no).text(arg.process + "%");
 });
 
 //拖拽处理
