@@ -71,7 +71,6 @@ __ipcRenderer.on('_historysearch_reply', function (event, arg) {
         for (let i = 0; i < arg.length; i++) {
             arg[i].no = i + 1;
         }
-        console.log(arg);
         app.todos = arg;
     }
 });

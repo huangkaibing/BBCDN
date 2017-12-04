@@ -77,7 +77,7 @@ __ipcRenderer.on('_logincheckversion_reply', function (event, arg) {
                 height: 800,
                 title: "",
                 icon: "./img/logo.ico",
-                autoHideMenuBar: true,
+                // autoHideMenuBar: true,
                 webPreferences: {defaultEncoding: "utf-8"},
                 show: false,
                 center: true
