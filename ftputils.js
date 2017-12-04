@@ -62,10 +62,10 @@ exports.ftpclient = function (localfilepath, cdnpath, cdnenum) {
     });
 
     const connectionProperties = {
-        host: "wsfdupload.lxdns.com",
-        port: 21,
-        user: "insbig",
-        password: "Yxybbcom159",
+        host: "xxx",
+        port: xxxx,
+        user: "xxx",
+        password: "xxx",
         connTimeout: 10000,
         pasvTimeout: 10000,
         keepalive: 10000
