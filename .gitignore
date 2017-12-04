@@ -1,0 +1,7 @@
+#windows:
+
+node_modules
+
+.git
+
+.idea

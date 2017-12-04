@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <script>
+        // 重命名 Electron 提供的 require
+        window.nodeRequire = require;
+        delete window.require;
+        delete window.exports;
+        delete window.module;
+    </script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <!-- Bootstrap -->
+    <link href="../lib/bootstrap-3.3.7/css/bootstrap.css" rel="stylesheet">
+    <title>保宝CDN上传工具</title>
+</head>
+<body>
+<div class="container-fluid" style="margin-top: 5px" id="login">
+    <div class="row-fluid">
+        <div class="span12 text-center" style="margin-top: 15px;">
+            <div class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label" for="inputEmail">账号:</label>
+                    <input id="inputEmail" type="text" v-model="email" @keyup.enter="login"/>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputPassword">密码:</label>
+                    <input id="inputPassword" type="password" v-model="password" @keyup.enter="login"/>
+                </div>
+                <div style="padding-left: 30px">
+                    <label class="checkbox-inline"><input type="checkbox" value="checkboxpwd" v-model="ischeckboxpwd" />记住密码</label>
+                    <label class="checkbox-inline"><input type="checkbox" value="checkboxautologin" v-model="ischeckboxautologin" />自动登陆</label>
+                </div>
+
+                <div class="control-group">
+                    <div class="controls" style="padding-top: 5px;padding-left: 35px">
+                        <button type="button" class="btn btn-primary" style="width: 180px" @click="login">登陆</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="span12 text-center" style="margin-top: 15px;">
+            <span>
+                保宝技术支持
+            </span>
+            <div style="display:inline;padding-left: 5px">v{{curversion}}</div>
+        </div>
+    </div>
+</div>
+
+<script src="../lib/vue.js"></script>
+<script src="../lib/jquery.min.js"></script>
+<script src="../lib/bootstrap-3.3.7/js/bootstrap.js"></script>
+<script src="../control/login.js"></script>
+</body>
+</html>
