@@ -10,7 +10,8 @@ let app = new Vue({
     el: '#history',
     data: {
         filenamepar: '',
-        todos: []
+        todos: [],
+        percent: "1/1"
     },
     methods: {
         searchCdnList: function () {
@@ -31,8 +32,8 @@ let app = new Vue({
                 icon: "./img/logo.ico",
                 autoHideMenuBar: true,
                 webPreferences: {defaultEncoding: "utf-8"},
-                center: true,
-                resizable: false
+                center: true
+                // resizable: false
             });
             win.loadURL(cdnpath)
         },
@@ -101,6 +102,8 @@ __ipcRenderer.on('_historysearch_reply', function (event, arg) {
         alert("文件不存在!");
     } else {
         pagecount = arg.count;
+        app.percent = (pagenum + 1) + "/" + Math.ceil(pagecount / 10);
+
         delete arg.count;
         let result = arg.rows;
         for (let i = 0; i < result.length; i++) {
