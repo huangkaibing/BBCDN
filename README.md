@@ -1,6 +1,10 @@
 ## BBCDN
 - ftp上传工具
 
+## 效果图
+
+![](http://download.yxybb.com/YXYBB/yunyingzhuanyong/2017/huangkb/12051447_ByGQWpmbz.jpg)
+
 ## 技术简介
 - electron
 - bootstrap
