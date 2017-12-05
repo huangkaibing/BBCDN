@@ -74,7 +74,7 @@ __ipcRenderer.on('_logincheckversion_reply', function (event, arg) {
         if (curversion === releaseversion) {
             let win = new __BrowserWindow({
                 width: 1400,
-                height: 800,
+                height: 820,
                 title: "",
                 icon: "./img/logo.ico",
                 // autoHideMenuBar: true,

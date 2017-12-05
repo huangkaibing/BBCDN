@@ -6,6 +6,7 @@ const fs = require('fs');
 const moment = require('moment');
 const uuid = require('node-uuid');
 const shortid = require('shortid');
+const {webContents} = require('electron');
 
 let userinfo;
 let win;
@@ -178,7 +179,7 @@ ipcMain.on('_uploadfile_msg', (event, arg) => {
                 flag: "当前用户单文件最大不得超过" + maxsize + "kb"
             });
         } else {
-            ftp.ftpclient(localfilepath, cdnpath.trim(), cdnmenu.trim(),arg.no).then(function () {
+            ftp.ftpclient(localfilepath, cdnpath.trim(), cdnmenu.trim(), arg.no).then(function () {
                 DB.cdnrecord.create({
                     id: uuid.v1().replace(/-/g, ""),
                     username: username,
@@ -226,24 +227,30 @@ ipcMain.on('_getuserinfo_msg', (event, arg) => {
 
 //------history.js
 ipcMain.on('_historysearch_msg', (event, arg) => {
-    if (arg.trim()) {
-        DB.cdnrecord.findAll({
+    if (arg.filenamepar) {
+        DB.cdnrecord.findAndCountAll({
+            attributes: ['cdnfilepath', 'createdAt','filename'],
             where: {
                 filename: {
-                    $like: arg + '%'
+                    $like: arg.filenamepar + '%'
                 },
                 username: username
             },
+            limit: 10,
+            offset: arg.pagenum * 10,
             order: [['createdAt', 'desc']]
         }).then(function (result) {
             event.sender.send('_historysearch_reply', result);
         });
     } else {
-        DB.cdnrecord.findAll({
-            attributes: ['cdnfilepath', 'filesize','createdAt'],
+        DB.cdnrecord.findAndCountAll({
+            attributes: ['cdnfilepath', 'createdAt','filename'],
             where: {
                 username: username
-            }, order: [['createdAt', 'desc']]
+            },
+            limit: 10,
+            offset: arg.pagenum * 10,
+            order: [['createdAt', 'desc']]
         }).then(function (result) {
             event.sender.send('_historysearch_reply', result);
         });
