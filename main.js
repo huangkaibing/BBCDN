@@ -99,9 +99,9 @@ ipcMain.on('_logincheckversion_msg', (event, arg) => {
 });
 
 ipcMain.on('_loginclose_msg', (event, arg) => {
-    setTimeout(function () {
+    // setTimeout(function () {
         win.close();
-    }, 10)
+    // }, 10)
 });
 
 ipcMain.on('_distorylogin_msg', (event, arg) => {
