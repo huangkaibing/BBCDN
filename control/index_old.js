@@ -91,8 +91,8 @@ let app = new Vue({
                 icon: "./img/logo.ico",
                 autoHideMenuBar: true,
                 webPreferences: {defaultEncoding: "utf-8"},
-                center: true,
-                resizable: false
+                center: true
+                // resizable: false
             });
             win.loadURL(cdnpath)
         },
