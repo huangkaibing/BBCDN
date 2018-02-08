@@ -44,7 +44,8 @@ exports.ftpclient = function (localfilepath, cdnpath, cdnenum, no) {
                         no: no,
                         process: ((cur / total) * 100).toFixed(1)
                     };
-                    webContents.getFocusedWebContents().send("_uploadprocess_reply", replyeb);
+                    // webContents.getFocusedWebContents().send("_uploadprocess_reply", replyeb);
+                    webContents.fromId(__SYSTEM.mainwin).send("_uploadprocess_reply", replyeb);
                 });
                 c.put(file, cdnpath, function (err) {
                     if (err) throw err;

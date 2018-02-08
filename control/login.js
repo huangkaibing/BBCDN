@@ -5,7 +5,7 @@ const __BrowserWindow = __remote.BrowserWindow;
 const __path = nodeRequire('path');
 const __url = nodeRequire('url');
 const __fs = nodeRequire('fs');
-let curversion = "0.7.0";
+let curversion = "0.8.0";
 
 let app = new Vue({
     el: '#login',
@@ -90,8 +90,9 @@ __ipcRenderer.on('_logincheckversion_reply', function (event, arg) {
             }));
             win.once('ready-to-show', () => {
                 win.show();
-                __ipcRenderer.send('_loginclose_msg', "");
+                __ipcRenderer.send('_loginclose_msg', win.id);
             })
+
         } else {
             alert(arg[0].dataValues.desc)
         }

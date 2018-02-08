@@ -99,9 +99,8 @@ ipcMain.on('_logincheckversion_msg', (event, arg) => {
 });
 
 ipcMain.on('_loginclose_msg', (event, arg) => {
-    // setTimeout(function () {
-        win.close();
-    // }, 10)
+    __SYSTEM.mainwin = arg;
+    win.close();
 });
 
 ipcMain.on('_distorylogin_msg', (event, arg) => {
@@ -229,7 +228,7 @@ ipcMain.on('_getuserinfo_msg', (event, arg) => {
 ipcMain.on('_historysearch_msg', (event, arg) => {
     if (arg.filenamepar) {
         DB.cdnrecord.findAndCountAll({
-            attributes: ['cdnfilepath', 'createdAt','filename'],
+            attributes: ['cdnfilepath', 'createdAt', 'filename'],
             where: {
                 filename: {
                     $like: arg.filenamepar + '%'
@@ -244,7 +243,7 @@ ipcMain.on('_historysearch_msg', (event, arg) => {
         });
     } else {
         DB.cdnrecord.findAndCountAll({
-            attributes: ['cdnfilepath', 'createdAt','filename'],
+            attributes: ['cdnfilepath', 'createdAt', 'filename'],
             where: {
                 username: username
             },

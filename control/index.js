@@ -50,7 +50,7 @@ let app = new Vue({
                 center: true
                 // resizable: false
             });
-            win.loadURL(cdnpath)
+            win.loadURL(cdnpath);
         },
         distorylogin: function () {
             __ipcRenderer.send('_distorylogin_msg', null);
